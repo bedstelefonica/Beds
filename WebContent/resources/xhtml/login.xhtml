@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+<link rel="stylesheet" type="text/css" href="../css/login.css"/>
+</h:head> 
+<body class="principal"> 
+
+<p:graphicImage name="/imagenes/logo-hb.png" />		
+	
+		<h:form>
+	<p:messages autoUpdate="true" showDetail="true"/>
+    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" styleClass="cuadro">    
+             
+		<p:outputLabel value="Username :" />
+		<p:inputText name="user" id="user" value="#{log.username}" required="true"/>
+			
+        <p:outputLabel value="Password :" />
+		<p:password name="password" id="password" value="#{log.password}" required="true"/>
+		          
+		<p:commandButton  value="Iniciar Sesión" action="#{log.actionValidar}" />
+     </h:panelGrid>	
+    
+	</h:form>
+
+  <p:stack icon="/resources/imagenes/redes1.png" expanded="true"  >
+    <p:menuitem value="Home" icon="/resources/imagenes/beds1.png" url="https://www.hotelbeds.com/home" />
+    <p:menuitem value="Facebook" icon="/resources/imagenes/facebook1.png" url="https://www.facebook.com/HotelbedsGroup/" />
+    <p:menuitem value="Linkedin" icon="/resources/imagenes/linkedin.png" url="https://www.linkedin.com/company/hotelbeds" />
+    <p:menuitem value="Twitter" icon="/resources/imagenes/twitter.png" url="https://twitter.com/hotelbedsgroup?lang=es" />
+
+</p:stack>
+
+</body> 
+</html>

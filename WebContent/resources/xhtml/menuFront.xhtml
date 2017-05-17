@@ -1,0 +1,29 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+<div class="contenedor">
+<h:form>
+<ui:composition>
+
+	<p:menubar>
+	
+		<p:submenu label="Facturas" icon="ui-icon-document">
+		<p:menuitem value="Adjuntar Facturas" url="http://localhost:8080/HOTELBEDS_17/resources/xhtml/facturacionFrontOffice.xhtml"/>
+		</p:submenu>
+		
+		<p:submenu label="Ofertas" icon="ui-icon-pencil">
+		<p:menuitem value="Apuntarse a Ofertas" url="http://localhost:8080/HOTELBEDS_17/resources/xhtml/verFrontOfertas.xhtml"/>
+		</p:submenu>
+	
+	</p:menubar>
+</ui:composition>
+</h:form>
+</div>
+</h:body>
+</html>

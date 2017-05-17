@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+		 <link rel="stylesheet" type="text/css" href="../css/Estilo2.css"/>
+
+
+</h:head>
+<body>
+
+
+	<header> <p:graphicImage name="/imagenes/logo-hb.png" /> </header>
+	
+	<ui:include src="/resources/xhtml/menuBack.xhtml" />
+<p:panelGrid columns="1">
+	<p:outputLabel value="Grafica Importes"/>
+	
+	<h:outputLink
+		value="http://localhost:8080/HOTELBEDS_17/resources/xhtml/KPImportes.xhtml">
+		<p:graphicImage name="/imagenes/grafica.jpg" width="100%" alt="100%" 
+			 />
+	</h:outputLink>
+
+</p:panelGrid>
+
+
+	<h:outputLink 
+		value="http://localhost:8080/HOTELBEDS_17/resources/xhtml/menuBackOffice.xhtml">
+		<p:graphicImage name="/imagenes/volver.png" width="10%" alt="5%" />
+	</h:outputLink>
+
+
+</body>
+</html>

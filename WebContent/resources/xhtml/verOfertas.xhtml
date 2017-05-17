@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+	<h:form id="form1">
+		<p:dataTable value="#{frontoferta.ofertas}" var="dato" border="1"
+			cellpadding="2" cellspacing="0" rows="10" paginator="true"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+			<p:column headerText="ID_Oferta">
+				<h:outputText value="#{dato.idoferta}" />
+			</p:column>
+			<p:column headerText="Puesto">
+				<h:outputText value="#{dato.puesto}" />
+			</p:column>
+			<p:column headerText="Perfil">
+				<h:outputText value="#{dato.perfil}" />
+			</p:column>
+			<p:column filterBy="#{dato.estado}" headerText="Estado">
+				<h:outputText value="#{dato.estado}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Selecionar" />
+				</f:facet>
+				<h:commandLink id="selecciona" value="Modificar">
+					<f:attribute name="ofertaFront" value="#{dato}" />
+					<f:ajax event="action" execute="@form"
+						render=":formFront2:oferFront"
+						listener="#{frontoferta.oyenteAjax}"
+						action="#{frontoferta.mostrarProveedores}" />
+				</h:commandLink>
+
+			</p:column>
+
+		</p:dataTable>
+
+	</h:form>
+
+	<h:form id="formFront2">
+
+		<h:panelGrid id="oferFront" columns="2" cellpadding="5">
+
+			<p:outputLabel value="IdOferta:" />
+			<p:inputText id="idoferta" value="#{frontoferta.oferta.idoferta}" />
+
+			<p:outputLabel value="Puesto:" />
+			<p:inputText id="puesto" value="#{frontoferta.oferta.puesto}" />
+
+			<p:outputLabel value="Perfil:" />
+			<p:inputText id="perfil" value="#{frontoferta.oferta.perfil}" />
+
+
+			<p:outputLabel value="Candidatos:" />
+
+
+		</h:panelGrid>
+	</h:form>
+
+	<br />
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#resources#xhtml#login.xhtml"
+  PATH="/resources/xhtml/login.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#resources#xhtml#login.xhtml:0" NAME="item"
+   PATH="/resources/xhtml/login.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="backoffice::#resources#xhtml#menuBackOffice.xhtml" NAME="output"
+    PATH="/resources/xhtml/menuBackOffice.xhtml"
+    TARGET="rules:#resources#xhtml#menuBackOffice.xhtml"
+    TITLE="backoffice" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="volver::#resources#xhtml#facturacionBackOffice.xhtml"
+    NAME="output1" PATH="/resources/xhtml/facturacionBackOffice.xhtml"
+    TARGET="rules:#resources#xhtml#facturacionBackOffice.xhtml"
+    TITLE="volver" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="frontoffice::#resources#xhtml#menuFrontOffice.xhtml"
+    NAME="output2" PATH="/resources/xhtml/menuFrontOffice.xhtml"
+    TARGET="rules:#resources#xhtml#menuFrontOffice.xhtml"
+    TITLE="frontoffice" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="administrador::#resources#xhtml#menuAdmin.xhtml" NAME="output3"
+    PATH="/resources/xhtml/menuAdmin.xhtml"
+    TARGET="rules:#resources#xhtml#menuAdmin.xhtml"
+    TITLE="administrador" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#resources#xhtml#menuBackOffice.xhtml"
+  PATH="/resources/xhtml/menuBackOffice.xhtml" SHAPE="272,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#resources#xhtml#menuFrontOffice.xhtml"
+  PATH="/resources/xhtml/menuFrontOffice.xhtml" SHAPE="272,209,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#resources#xhtml#menuAdmin.xhtml"
+  PATH="/resources/xhtml/menuAdmin.xhtml" SHAPE="272,321,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#resources#xhtml#facturacionBackOffice.xhtml"
+  PATH="/resources/xhtml/facturacionBackOffice.xhtml"
+  SHAPE="288,465,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

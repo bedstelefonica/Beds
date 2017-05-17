@@ -1,0 +1,199 @@
+<!DOCTYPE html> 
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"> 
+
+<h:head>
+	<h:outputStylesheet library="css" name="Estilo2.css"></h:outputStylesheet>
+</h:head>
+<body> 
+<header>
+	<p:graphicImage name="/imagenes/logo-hb.png" />
+</header>
+<ui:include src="/resources/xhtml/menuBack.xhtml" />
+<h:form id="form1" styleClass="principal">
+
+		<p:dataTable id="tab" value="#{actualizabo.ofertas}" var="dato" border="1"
+			cellpadding="2" cellspacing="0" rows="20" paginator="true"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+			
+			<p:column filterBy="#{dato.idoferta}" headerText="ID_Oferta">
+				<h:outputText value="#{dato.idoferta}" />
+			</p:column>
+			<p:column filterBy="#{dato.puesto}" headerText="Puesto">
+				<h:outputText value="#{dato.puesto}" />
+			</p:column>
+			<p:column filterBy="#{dato.perfil}" headerText="Perfil">
+				<h:outputText value="#{dato.perfil}" />
+			</p:column>
+			<p:column filterBy="#{dato.estado}" headerText="Estado">
+				<h:outputText value="#{dato.estado}" />
+			</p:column>
+
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Seleccionar" />
+				</f:facet>
+				<h:commandLink id="selecciona" value="Modificar">
+					<f:attribute name="ofert" value="#{dato}" />
+					<f:ajax event="action" execute="@form" render=":formSel:grid"
+						listener="#{actualizabo.oyenteAjax}"
+						 />
+				</h:commandLink>
+
+			</p:column>
+		</p:dataTable>
+
+	</h:form>
+		<br />
+	<h:form id="formSel">
+
+		<h:panelGrid id="grid" columns="1" cellpadding="5">	
+		
+		<p:dataTable value="#{actualizabo.oferta}">		
+		
+		<f:facet name="header">
+            OFERTA SELECCIONADA:
+    	</f:facet>
+    
+        <p:columnGroup type="header">           
+            <p:row>               
+                <p:column headerText="ID Oferta" />
+                <p:column headerText="Puesto / Rol" />
+                <p:column headerText="Estudios" />
+                <p:column headerText="Estado " />
+            </p:row>
+        </p:columnGroup>
+		
+		 <p:column>
+            <h:outputLabel id="idoferta" value="#{actualizabo.oferta.idoferta}" />
+        </p:column>
+        <p:column>
+            <h:outputLabel id="puesto" value="#{actualizabo.oferta.puesto}" />
+        </p:column>
+        <p:column>
+            <h:inputText id="perfil" value="#{actualizabo.oferta.perfil}" />
+        </p:column>
+        <p:column>
+            <p:outputLabel id="estado" value="#{actualizabo.oferta.estado}" />
+        </p:column>
+          
+		</p:dataTable>		
+		
+
+			
+			
+			
+			<p:dataTable id="ctec" for="ctec" value="#{actualizabo.compTencicas}" var="dato" border="1" selection="#{recursosbo.selectedComTecnicas}" rowKey="#{dato.idcompetencia}"
+			cellpadding="2" cellspacing="0">				    
+				    <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
+					<p:column>
+						<f:facet name="header">
+				 			<h:outputText value="COMPETENCIAS TÉCNICAS:" />
+				 		</f:facet>
+						<h:outputText value="#{dato.descripcion}" >
+						<br />
+					   </h:outputText>
+					</p:column>			
+					
+					<p:column>
+						<f:facet name="header">
+				 			<h:outputText value="REQUERIDO / DESEADO:" />
+				 		</f:facet>
+						<p:selectOneRadio id="rd" >
+				            <f:selectItem itemLabel="Requerido" itemValue="requerido" />
+				            <f:selectItem itemLabel="Deseado" itemValue="deseado" />
+				        </p:selectOneRadio>				        
+					</p:column>
+					
+					<p:column>
+					    <f:facet name="header">
+				 			<h:outputText value="AÑOS DE EXPERIENCIA" />
+				 		</f:facet>						
+						<p:inputText/>				        
+					</p:column>				
+					
+					</p:dataTable>
+					<p:dataTable value="#{actualizabo}" var="cf">
+					<p:columnGroup type="header">           
+		            <p:row>               
+		                <p:column headerText="Competencias Personales" />
+		                <p:column headerText="Proveedores" />		                
+		            </p:row>
+		        </p:columnGroup>
+		        <p:column>
+		            <p:outputLabel value="Competencias Personales:" />
+			<p:pickList id="pickList0" value="#{cf.comperBack}" var="cp" itemLabel="#{cp}" itemValue="#{cp}" />
+		        </p:column>
+		        <p:column>
+		            <p:outputLabel value="Proveedores:" />
+			<p:pickList id="pickList" value="#{cf.proveedores}"
+				var="prov" itemLabel="#{prov}" itemValue="#{prov}" />	
+		        </p:column>
+					</p:dataTable>
+					
+					
+					
+			
+				 
+						
+							
+       	</h:panelGrid>
+		<p:dataTable  value="#{actualizabo.candidatos}" var="dc" selection="#{actualizabo.selectCandidato}" rowKey="#{dc.idcandidato}">
+		<p:column selectionMode="single" style="width:16px;text-align:center"/>
+		<p:column>
+		    <f:facet name="header">
+	 			<h:outputText value="Candidato" />
+	 		</f:facet>						
+			<h:outputText value="#{dc.nombrecandidato}"/>				        
+		</p:column>	
+		<p:column>
+		    <f:facet name="header">
+	 			<h:outputText value="CV" />
+	 		</f:facet>						
+			<h:outputText/>				        
+		</p:column>
+		<p:column>
+		    <f:facet name="header">
+	 			<h:outputText value="Proveedor" />
+	 		</f:facet>						
+			<h:outputText value="#{dc.idproveedor}"/>				        
+		</p:column>	
+		</p:dataTable>
+		
+		 <p:commandButton value="Modificar" styleClass="ui-priority-primary" update="mensaje0" action="#{actualizabo.mensajeModifica}">
+		 		 
+			<f:attribute name="modoferta" value="#{actualizabo.oferta}"/>
+   			<f:attribute name="tipo" value="1"  />  
+   			<f:ajax execute="@form" render=":form1:tab" listener="#{actualizabo.buttonModifica}"/>		 
+		 </p:commandButton>   
+		 <p:growl id="mensaje0" />
+		 
+		 <p:commandButton value="Validar" update="mensaje1" id="mybutton"  action="#{actualizabo.mensajeValida}">		 		  
+			<f:attribute name="valOferta" value="#{actualizabo.oferta}"/>
+   			<f:attribute name="tipo" value="2"  />  
+   			<f:ajax execute="@form" render=":form1:tab" listener="#{actualizabo.buttonValidar}"/>
+   				 
+		 </p:commandButton>
+		 <p:growl id="mensaje1" />		 
+		 
+		 <p:commandButton value="Cerrar" styleClass="ui-priority-primary">		 
+			<f:attribute name="cerrarOferta" value="#{actualizabo.oferta}"/>
+   			<f:attribute name="tipo" value="3"  />  
+   			<f:ajax execute="@form" render=":form1:tab" listener="#{actualizabo.buttonCerrar}"/>		 
+		 </p:commandButton>  
+		 <p:growl id="msgCerrar" />	  
+        
+	</h:form>
+	
+	<h:outputLink
+		value="http://localhost:8080/HOTELBEDS_17/resources/xhtml/menuBackOffice.xhtml">
+		<p:graphicImage name="/imagenes/volver.png" width="10%" alt="5%" />
+	</h:outputLink>
+</body> 
+</html>

@@ -1,0 +1,41 @@
+@CHARSET "ISO-8859-1";
+
+.body{
+	background-color: #FFF0FF;
+	padding: 20;
+}
+.centro{
+	width:400px;
+	margin:0px auto;
+}
+.titulo{
+	color: #FF0984;
+	font-size: medium;
+	font-family: Verdana Pro;
+	text-align: center
+	
+}
+
+.cuadro{
+	border-radius: 10px;	
+	position: relative;
+	/*margin: 0px auto;*/
+	width: 550px;
+	font-size: 12px;       
+   	padding: 0;
+   	float: center;
+   	margin-top: 100px;
+margin-bottom: 100px;
+margin-right: 50px;
+margin-left: 300px;
+   	padding-top: 0.2em; 
+   	padding-button: 10px; 
+   	padding-left: 1px;
+   	text-align: left; 
+  	border: 1px solid grey; 
+  	font-weight: bold;
+	direction: ltr;
+	background-color: #EBEBEB;
+	height: 10px;"
+	
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head></h:head> 
+<h:body> 
+<div class="contenedor">
+<h:form>
+<ui:composition>
+	<p:menubar>
+	
+		<p:submenu label="Facturas" icon="ui-icon-document">
+		<p:menuitem value="Listado Facturas" url="http://localhost:8080/HOTELBEDS_17/resources/xhtml/facturacionBackOffice.xhtml"/>
+		</p:submenu>
+		
+		<p:submenu label="Ofertas" icon="ui-icon-pencil">
+		<p:menuitem value="Crear Oferta" url="http://localhost:8080/HOTELBEDS_17/resources/xhtml/ofertaTrabajo.xhtml"/>
+		<p:menuitem value="Modificar Oferta" url="http://localhost:8080/HOTELBEDS_17/resources/xhtml/modificarOferta.xhtml"/>
+		</p:submenu>
+		
+		<p:submenu label="KPIs" icon="ui-icon-bookmark">
+		<p:menuitem value="Estadisticas" url="http://localhost:8080/HOTELBEDS_17/resources/xhtml/KPImportes.xhtml"/>
+		</p:submenu>
+		
+		<p:submenu label="Usuarios" icon="ui-ico-person">
+		<p:menuitem value="Alta Usuarios" url="http://localhost:8080/HOTELBEDS_17/resources/xhtml/altaUsuariosBack.xhtml" />
+		</p:submenu>
+	
+	</p:menubar>
+	</ui:composition>
+	</h:form>
+</div>
+</h:body> 
+</html>

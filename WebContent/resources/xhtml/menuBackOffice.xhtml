@@ -1,0 +1,65 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	 <link rel="stylesheet" type="text/css" href="../css/Estilo1.css"/>
+</h:head> 
+
+<body class="cuerpo">
+<form>
+<header>
+<p:graphicImage name="/imagenes/logo-hb.png" />
+</header>
+	
+   <p:panelGrid columns="5"  styleClass="panelGridA" >            
+    <h:outputText value="Gestión de facturas" /> 
+    <h:outputText value="Crear oferta" /> 
+    <h:outputText value="Modificar oferta" /> 
+    <h:outputText value="Kpis" /> 
+    <h:outputText value="Gestión de usuarios" /> 
+   
+    	<h:outputLink
+		value="http://localhost:8080/HOTELBEDS_17/resources/xhtml/facturacionBackOffice.xhtml">
+		<p:graphicImage name="/imagenes/listafact.jpg" width="80%" alt="15%" title="Gestión de Usuarios" styleClass="img"/> 
+	</h:outputLink>
+    
+        <h:outputLink
+         value="http://localhost:8080/HOTELBEDS_17/resources/xhtml/ofertaTrabajo.xhtml">
+		<p:graphicImage name="/imagenes/formulario4.jpg" width="80%" alt="15%" styleClass="img"/> 
+	   </h:outputLink>
+	
+        	<h:outputLink
+		value="http://localhost:8080/HOTELBEDS_17/resources/xhtml/modificarOferta.xhtml">
+	    <p:graphicImage name="/imagenes/modificar.jpg" width="80%" alt="15%" styleClass="img"  /> 
+       </h:outputLink>
+	 
+        	<h:outputLink
+		value="http://localhost:8080/HOTELBEDS_17/resources/xhtml/KPIs.xhtml">
+		<p:graphicImage name="/imagenes/kpi.jpg" width="80%" alt="15%" styleClass="img"/> 
+	    </h:outputLink>
+	
+        	<h:outputLink title="Gestión de Usuarios" 
+		value="http://localhost:8080/HOTELBEDS_17/resources/xhtml/altaUsuariosBack.xhtml">
+		<p:graphicImage name="/imagenes/nuevoUsua.jpg" width="5%" alt="15%" styleClass="img"/> 
+	    </h:outputLink>
+    
+ 
+
+</p:panelGrid>
+
+
+
+
+	<h:outputLink
+		value="http://localhost:8080/HOTELBEDS_17/resources/xhtml/login.xhtml">
+		<p:graphicImage name="/imagenes/volver.png" width="10%" alt="5%" /> 
+		
+	</h:outputLink>
+</form>
+</body>
+</html>

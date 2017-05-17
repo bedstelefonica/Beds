@@ -1,0 +1,175 @@
+<!DOCTYPE html  >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+<h:outputStylesheet library="css" name="Estilo3.css"></h:outputStylesheet>
+</h:head>
+<body>
+	<header>
+		<p:graphicImage name="/imagenes/logo-hb.png" />
+	</header>
+	<ui:include src="/resources/xhtml/menuFront.xhtml" />
+	<h:form id="form1" enctype="multipart/form-data" styleClass="principal">
+		<p:dataTable id="tabof" value="#{frontoferta.ofertas}" var="dato"
+			border="1" cellpadding="2" cellspacing="0" rows="10" paginator="true"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+			
+			<f:facet name="header">
+		            OFERTAS
+		    </f:facet>
+			<p:column filterBy="#{dato.estado}" headerText="ID_Oferta">
+				<h:outputLabel value="#{dato.idoferta}" />
+
+			</p:column>
+			<p:column filterBy="#{dato.puesto}" headerText="Puesto - Rol:">
+				<h:outputText value="#{dato.puesto}" />
+			</p:column>
+			<p:column filterBy="#{dato.perfil}" headerText="Perfil">
+				<h:outputText value="#{dato.perfil}" />
+			</p:column>
+			<p:column filterBy="#{dato.estado}" headerText="Estado">
+				<h:outputText value="#{dato.estado}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Selecionar" />
+				</f:facet>
+				
+				<p:commandButton id="selecciona" value="Modificar">
+				<f:attribute name="ofertaFront" value="#{dato}" />
+					<f:attribute name="estado" value="#{dato.estado}" />
+					<f:ajax execute="@form"
+						render=":formFront2:oferFront"
+						listener="#{frontoferta.oyenteAjax}" />
+				</p:commandButton>
+				
+				
+
+			</p:column>
+
+		</p:dataTable>
+	
+			
+	
+	
+		
+				
+      
+	</h:form>
+	<br />
+	<br />
+	<br />
+	
+	<h:form id="formFront2" enctype="multipart/form-data">
+
+
+
+
+		<h:panelGrid id="oferFront" value="#{frontoferta.oferta}" columns="1"
+			cellpadding="5">
+
+
+<p:dataTable value="#{frontoferta.oferta}">
+	<f:facet name="header">
+            OFERTA SELECCIONADA
+    </f:facet>
+    
+        <p:columnGroup type="header">           
+            <p:row>               
+                <p:column headerText="ID Oferta" />
+                <p:column headerText="Puesto / Rol" />
+                <p:column headerText="Estudios" />
+            </p:row>
+        </p:columnGroup>
+        <p:column>
+            <h:outputText value="#{frontoferta.oferta.idoferta}" />
+        </p:column>
+        <p:column>
+            <h:outputText value="#{frontoferta.oferta.puesto}" />
+        </p:column>
+        <p:column>
+            <h:outputText value="#{frontoferta.oferta.perfil}" />
+        </p:column>
+</p:dataTable>
+
+
+
+			
+
+			<p:dataTable value="#{frontoferta.compPersonales}" var="cp">
+				<p:column headerText="Competencias Personales:">
+					<h:outputText value="#{cp.descripcion}" />
+				</p:column>
+			</p:dataTable>
+
+			<p:dataTable value="#{frontoferta.compTencicas}" var="ct">
+				<p:column headerText="Competencias Tecnicas">
+					<h:outputLabel value="#{ct.descripcion}" />
+				</p:column>				
+			</p:dataTable>
+			<p:dataTable value="#{frontoferta.candidatos}" var="lc">
+				<p:column headerText="Candidato">
+					<h:outputLabel value="#{lc.nombrecandidato}" />
+				</p:column>
+				<p:column headerText="CV">
+					<h:outputLabel value="Fichero" />
+				</p:column>
+			</p:dataTable>
+
+
+<br />
+			<p:dataTable value="#{frontoferta}">
+			<f:facet name="header">
+		            ADJUNTAR CANDIDATOS:
+		    </f:facet>
+			<p:columnGroup type="header">           
+            <p:row>               
+                <p:column headerText="Nombre del Candidato" />
+                <p:column headerText="CV" />
+               
+            </p:row>
+           </p:columnGroup>
+        
+        		<p:column >
+					<p:inputText id="nombre" value="#{frontoferta.nombreCandidato}" />
+				</p:column>
+				<p:column >
+					<p:fileUpload value="#{frontoferta.file}"
+			fileUploadListener="#{frontoferta.upload}" 
+			 dragDropSupport="false" update="mes"
+			sizeLimit="100000000" fileLimit="3" allowTypes="/(\.|\/)(pdf)$/" />
+			<p:growl id="mes" showDetail="true" />
+				</p:column>
+			</p:dataTable>
+			
+			
+			
+			
+			
+
+	
+			<p:commandButton id="boton" value="Agregar Candidato" update="messageCan" action="#{frontoferta.mensajeCandidato}" >
+				<f:attribute name="idof" value="#{frontoferta.oferta}" />
+				
+				<f:ajax  execute="@form" render=":form1:tabof"
+					listener="#{frontoferta.oyente}" update="nombre"/>
+					
+			</p:commandButton>
+			<p:growl id="messageCan" showDetail="true" />
+		</h:panelGrid>
+	</h:form>
+
+	<br />
+	
+	<h:outputLink
+		value="http://localhost:8080/HOTELBEDS_17/resources/xhtml/menuFrontOffice.xhtml">
+		<p:graphicImage name="/imagenes/volver.png" width="10%" alt="5%" />
+	</h:outputLink>
+
+</body>
+</html>

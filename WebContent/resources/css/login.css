@@ -1,0 +1,49 @@
+h1{
+	font-family: 'Lato', Arial, sans-serif;
+	font-size:14px;
+	font-weight: bold;
+	color:#000000;
+    letter-spacing: 0.03em;
+    margin:100px;
+    text-align: center;
+}
+.logo{
+	
+  
+    margin:0px 0px 0px 100px;
+    
+}
+
+
+
+.cuadro{
+	position: absolute;
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+   
+	background-image: fondo4.jpg;
+	background-size: cover;
+	background-attachment: fixed;
+	background-color: #eaeaff;
+	padding: 20px 20px 20px 20px;
+	border: 2px solid #808080;
+}
+body{
+	
+    background-image: url(../imagenes/playa.jpg);
+    background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+
+	
+}
+
+
+.Bordes{
+
+
+}
+	

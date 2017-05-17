@@ -1,0 +1,145 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<h:outputStylesheet library="css" name="Estilo2.css"></h:outputStylesheet>
+</h:head>
+<body>
+
+	<header>
+		<p:graphicImage name="/imagenes/logo-hb.png" />
+	</header>
+	<h1>LISTADO DE FACTURAS</h1>
+	
+	<ui:include src="/resources/xhtml/menuBack.xhtml" />
+
+	<h:form id="Formulario1" styleClass="principal">
+		<p:dataTable id="Tabla1" var="ObjetoFactura"
+			value="#{FacturacionBackOffice.listaFactura}" rules="rows"
+			widgetVar="FacturasTable" 
+			paginator="true" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15">
+			
+			
+
+			<p:column filterBy="#{ObjetoFactura.idfactura}"
+				headerText="IdFactura">
+				<h:outputText value="#{ObjetoFactura.idfactura}" />
+			</p:column>
+
+			<p:column filterBy="#{ObjetoFactura.proveedor}"
+				headerText="Proveedor">
+				<h:outputText value="#{ObjetoFactura.proveedor}" />
+			</p:column>
+
+			<p:column filterBy="#{ObjetoFactura.estado}" headerText="Estado">
+				<h:outputText value="#{ObjetoFactura.estado}" />
+			</p:column>
+
+
+			<p:column filterBy="#{ObjetoFactura.concepto}" headerText="Concepto">
+				<h:outputText value="#{ObjetoFactura.concepto}" />
+			</p:column>
+
+			<p:column filterBy="#{ObjetoFactura.importe}" headerText="Importe">
+				<h:outputText value="#{ObjetoFactura.importe}" />
+			</p:column>
+
+			<p:column filterBy="#{ObjetoFactura.nrofactura}"
+				headerText="NºFactura">
+				<h:outputText value="#{ObjetoFactura.nrofactura}" />
+			</p:column>
+
+			<p:column headerText="Modificar">
+				<h:commandLink id="ttt" value="Selecionar">
+					<f:attribute name="DFactura" value="#{ObjetoFactura}">
+					</f:attribute>
+					<f:ajax event="action" listener="#{FacturacionBackOffice.oyente}"
+						render=":Formulario2:Tabla2" execute="@this" />
+					<f:setPropertyActionListener value="#{ObjetoFactura}"
+						target="#{FacturacionBackOffice.objetoDatosFactura}"></f:setPropertyActionListener>
+				</h:commandLink>
+			</p:column>
+
+
+		</p:dataTable>
+	</h:form>
+	<h:form id="Formulario2">
+		<h2>MODIFICAR FACTURAS</h2>
+
+
+		<p:panelGrid id="Tabla2" columns="2" styleClass="cuadro">
+
+			<h:outputText value="IdFactura" />
+			<p:inputText
+				value="#{FacturacionBackOffice.objetoDatosFactura.idfactura}"
+				styleClass="Bordes" />
+
+			<h:outputText value="Proveedor" />
+			<p:inputText
+				value="#{FacturacionBackOffice.objetoDatosFactura.proveedor}"
+				styleClass="Bordes" />
+
+
+			<h:outputText value="Estado" />
+			<p:inputText
+				value="#{FacturacionBackOffice.objetoDatosFactura.estado}"
+				styleClass="Bordes" />
+
+
+			<h:outputText value="Concepto" />
+			<p:inputText 
+				value="#{FacturacionBackOffice.objetoDatosFactura.concepto}"
+				styleClass="Bordes" />
+
+			<h:outputText value="Importe" />
+			<p:inputText
+				value="#{FacturacionBackOffice.objetoDatosFactura.importe}"
+				styleClass="Bordes" />
+
+
+			<h:outputText value="NªFactura" />
+			<p:inputText
+				value="#{FacturacionBackOffice.objetoDatosFactura.nrofactura}"
+				styleClass="Bordes" />
+
+
+			<p:commandButton  id="BotonModificar" update="messages3" action="#{FacturacionBackOffice.mensajeModificacion}">
+				<f:attribute name="DFactura" value="#{ObjetoFactura}">
+				</f:attribute>
+				<f:ajax listener="#{FacturacionBackOffice.modifica}"
+					render=":Formulario1:Tabla1" execute="@form">
+				</f:ajax>
+
+
+			</p:commandButton>
+			<p:growl id="messages3" showDetail="true" />
+
+
+			
+
+		</p:panelGrid>
+		
+		<p:fileUpload
+				fileUploadListener="#{FacturacionBackOffice.handleFileUpload}"
+				mode="advanced" dragDropSupport="false" update="messages4"
+				sizeLimit="100000000" fileLimit="3" allowTypes="/(\.|\/)(pdf)$/" />
+
+			<p:growl id="messages4" showDetail="true" />
+		
+	</h:form>
+	
+	
+
+	<h:outputLink
+		value="http://localhost:8080/HOTELBEDS_17/resources/xhtml/menuBackOffice.xhtml">
+		<p:graphicImage name="/imagenes/volver.png" width="10%" alt="5%" />
+	</h:outputLink>
+	
+
+</body>
+</html>

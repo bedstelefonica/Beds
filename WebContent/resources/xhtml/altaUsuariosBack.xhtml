@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	 <link rel="stylesheet" type="text/css" href="../css/Estilo2.css"/>
+
+</h:head>
+
+<body>
+
+<h1>Listado Usuarios</h1>
+
+<ui:include src="/resources/xhtml/menuBack.xhtml" />
+
+	<header> <p:graphicImage name="/imagenes/logo-hb.png" /> </header>
+	
+
+	<h:form id="Formulario1" styleClass="principal">
+		<p:dataTable id="Tabla1" var="ObjetoUsuario"
+			value="#{AltaUsuario.listaUsuarios}" rules="rows"
+			widgetVar="FacturasTable">
+
+			<p:column filterBy="#{ObjetoUsuario.idusuario}"
+				headerText="IdUsuario">
+				<h:outputText value="#{ObjetoUsuario.idusuario}" />
+			</p:column>
+
+			<p:column filterBy="#{ObjetoUsuario.user}" headerText="Usuario">
+				<h:outputText value="#{ObjetoUsuario.user}" />
+			</p:column>
+
+
+			<p:column filterBy="#{ObjetoUsuario.perfil}" headerText="Perfil">
+				<h:outputText value="#{ObjetoUsuario.perfil}" />
+			</p:column>
+
+			<p:column filterBy="#{ObjetoUsuario.nombre}" headerText="Nombre">
+				<h:outputText value="#{ObjetoUsuario.nombre}" />
+			</p:column>
+
+			<p:column filterBy="#{ObjetoUsuario.apellido}" headerText="Apellidos">
+				<h:outputText value="#{ObjetoUsuario.apellido}" />
+			</p:column>
+
+			<p:column filterBy="#{ObjetoUsuario.idrelacion}"
+				headerText="IdRelación">
+				<h:outputText value="#{ObjetoUsuario.idrelacion}" />
+			</p:column>
+
+			<p:column headerText="Modificar">
+				<h:commandLink id="ttt" value="Selecionar">
+					<f:attribute name="DUsuario" value="#{ObjetoUsuario}">
+					</f:attribute>
+					<f:ajax event="action" listener="#{AltaUsuario.oyente}"
+						render=":Formulario2:Tabla2" execute="@this" />
+					<f:setPropertyActionListener value="#{ObjetoUsuario}"
+						target="#{AltaUsuario.objetoDatosUsuario}"></f:setPropertyActionListener>
+				</h:commandLink>
+			</p:column>
+
+
+		</p:dataTable>
+	</h:form>
+
+
+	<p:panelGrid columns="3">
+
+		<h:form id="LL">
+			<h2>Nuevo Usuario</h2>
+			<p:panelGrid columns="2">
+
+				<p:outputLabel value="IdUsuario" />
+				<p:inputText value="#{AltaUsuario.idusuario}" required="true"
+					styleClass="Bordes" />
+
+				<p:outputLabel value="Usuario" />
+				<p:inputText value="#{AltaUsuario.user}" required="true"
+					styleClass="Bordes" />
+
+				<p:outputLabel value="Password" />
+				<p:inputText value="#{AltaUsuario.password}" required="true"
+					styleClass="Bordes" />
+
+
+				<p:outputLabel value="Perfil" />
+				<p:inputText value="#{AltaUsuario.perfil}" required="true"
+					styleClass="Bordes" />
+
+
+
+				<p:outputLabel value="Nombre" />
+				<p:inputText value="#{AltaUsuario.nombre}" required="true"
+					styleClass="Bordes" />
+
+
+				<p:outputLabel value="Apellido" />
+				<p:inputText value="#{AltaUsuario.apellido}" required="true"
+					styleClass="Bordes" />
+
+				<p:outputLabel value="IdRelacion" />
+				<p:inputText value="#{AltaUsuario.idrelacion}" required="true"
+					styleClass="Bordes" />
+
+
+				<p:commandButton value="Alta" action="#{AltaUsuario.addUsuarios}"
+					update="messages11" >
+				<p:growl id="messages11" showDetail="true" />
+				</p:commandButton>
+				
+				
+				<p:fileUpload
+					fileUploadListener="#{FacturacionBackOffice.handleFileUpload}"
+					mode="advanced" dragDropSupport="false" sizeLimit="100000000"
+					fileLimit="3" allowTypes="/(\.|\/)(pdf)$/" />
+				<p:growl id="messages" showDetail="true" />
+
+			</p:panelGrid>
+		</h:form>
+
+
+		<p:separator style="width:10em;background-color:#dbdbdb;height: 250px" />
+
+
+		<h:form id="Formulario2" styleClass="formMod">
+			<h2>MODIFICAR DATOS USUARIOS</h2>
+
+
+			<p:panelGrid id="Tabla2" columns="2" >
+
+				<p:outputLabel value="IdUsuario" />
+				<p:outputLabel value="#{AltaUsuario.objetoDatosUsuario.idusuario}"
+					styleClass="Bordes" />
+
+				<p:outputLabel value="Usuario" />
+				<p:inputText value="#{AltaUsuario.objetoDatosUsuario.user}"
+					styleClass="Bordes" />
+
+
+				<p:outputLabel value="Contraseña" />
+				<p:inputText value="#{AltaUsuario.objetoDatosUsuario.password}"
+					styleClass="Bordes" />
+
+
+				<p:outputLabel value="Perfil" />
+				<p:inputText value="#{AltaUsuario.objetoDatosUsuario.perfil}"
+					styleClass="Bordes" />
+
+				<p:outputLabel value="Nombre" />
+				<p:inputText value="#{AltaUsuario.objetoDatosUsuario.nombre}"
+					styleClass="Bordes" />
+
+
+				<p:outputLabel value="Apellido" />
+				<p:inputText value="#{AltaUsuario.objetoDatosUsuario.apellido}"
+					styleClass="Bordes" />
+
+				<p:outputLabel value="IdRelacion" />
+				<p:inputText value="#{AltaUsuario.objetoDatosUsuario.idrelacion}"
+					styleClass="Bordes" />
+
+
+				<p:commandButton id="BotonModificar" value="Modificar"
+					update="messages12" action="#{AltaUsuario.mensajemodificar}">
+					<f:attribute name="DUsuario" value="#{ObjetoUsuario}">
+					</f:attribute>
+					<f:ajax listener="#{AltaUsuario.modifica}"
+						render=":Formulario1:Tabla1" execute="@form">
+					</f:ajax>
+					<p:growl id="messages12" showDetail="true" />
+				</p:commandButton>
+
+				<p:fileUpload
+					fileUploadListener="#{FacturacionBackOffice.handleFileUpload}"
+					mode="advanced" dragDropSupport="false" sizeLimit="100000000"
+					fileLimit="3" allowTypes="/(\.|\/)(pdf)$/" />
+				<p:growl id="messages" showDetail="true" />
+
+			</p:panelGrid>
+		</h:form>
+
+	</p:panelGrid>
+
+	<h:outputLink
+		value="http://localhost:8080/HOTELBEDS_17/resources/xhtml/menuBackOffice.xhtml">
+		<p:graphicImage name="/imagenes/volver.png" width="10%" alt="5%" />
+	</h:outputLink>
+
+</body>
+</html>
+
+
+
+

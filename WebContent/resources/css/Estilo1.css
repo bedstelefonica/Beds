@@ -1,0 +1,43 @@
+.logo {
+	margin: 0px 0px 0px 100px;
+}
+
+body {
+	background-image: url(../imagenes/fondo4.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.img {
+	height: 200px;
+	width: 200px;
+	background-repeat: no-repeat;
+	background-position: 50%;
+	border-radius: 50%;
+	background-size: 100% auto;
+}
+
+.panelGridA {
+	width: 50%;
+	height: 400px;
+	margin: auto;
+	text-align: center;
+	border: none !important;
+	background-color: grey !important;
+}
+
+.panelGridA.ui-panelgrid>*>tr, .panelGridA.ui-panelgrid .ui-panelgrid-cell
+	{
+	border: none;
+}
+
+.ui-panelgrid td {
+	background-color: #d6d6d6 !important;
+}
+
+.ui-widget {
+	font-family: Arial, sans-serif;
+	color: white;
+	font-size: 2em;
+}

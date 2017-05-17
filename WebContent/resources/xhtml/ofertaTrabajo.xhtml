@@ -1,0 +1,95 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+	 <link rel="stylesheet" type="text/css" href="../css/Estilo2.css"/>
+
+</h:head>
+<body> 
+<header>
+		<p:graphicImage name="/imagenes/logo-hb.png" />
+	</header>
+	<ui:include src="/resources/xhtml/menuBack.xhtml" />
+	<h2>NUEVA OFERTA</h2>
+	
+	<h:form id="form" enctype="multipart/form-data" styleClass="cuadro">
+	
+	<h:panelGrid id="pg" columns = "4">
+		<h:outputLabel value = "PUESTO / ROL:"  /> 
+	    <h:outputLabel value = "ESTUDIOS:"  />	
+	    <h:outputLabel value = "SEGUNDO NIVEL INFORMATIVO:"  />  	
+	    <h:outputLabel value = "TERCER NIVEL INFORMATIVO:"  /> 
+		
+		
+		 <p:selectOneMenu id="re" value="#{recursosbo.rol}" >
+		  
+   	<f:ajax execute="@form" render=":form:ctec" listener="#{recursosbo.cambiarCompTecnica}"/>
+            <f:selectItem itemLabel="Select One" itemValue="" />
+            <f:selectItems value="#{recursosbo.roles}" />
+        </p:selectOneMenu>
+				
+		
+		<p:inputText value="#{recursosbo.perfil}"/>
+		<p:inputTextarea value="#{recursosbo.segundoNivel}" rows="10" cols="50"  />
+		<p:inputTextarea value="#{recursosbo.tercerNivel}" rows="10" cols="50" />
+			
+	</h:panelGrid>	
+	
+	<p:dataTable id="ctec" for="ctec" value="#{recursosbo.compeTecnica}" var="dato" border="1" selection="#{recursosbo.selectedComTecnicas}" rowKey="#{dato.idcompetencia}"
+			cellpadding="2" cellspacing="0">				    
+				    <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
+					<p:column>
+						<f:facet name="header">
+				 			<h:outputText value="COMPETENCIAS TÉCNICAS:" />
+				 		</f:facet>
+						<h:outputText value="#{dato.descripcion}" >
+						<br />
+					   </h:outputText>
+					</p:column>			
+					
+					<p:column>
+						<f:facet name="header">
+				 			<h:outputText value="REQUERIDO / DESEADO:" />
+				 		</f:facet>
+						<p:selectOneRadio id="rd" >
+				            <f:selectItem itemLabel="Requerido" itemValue="requerido" />
+				            <f:selectItem itemLabel="Deseado" itemValue="deseado" />
+				        </p:selectOneRadio>				        
+					</p:column>
+					
+					<p:column >
+					    <f:facet name="header">
+				 			<h:outputText value="AÑOS DE EXPERIENCIA" />
+				 		</f:facet>						
+						<p:inputText />				        
+					</p:column>				
+					
+					</p:dataTable>
+					
+					<h:outputLabel value = "COMPETENCIAS PERSONALES:"  /> 
+					<p:pickList id="pickList0" value="#{recursosbo.comper}" var="cp" itemLabel="#{cp}" itemValue="#{cp}" />
+				  <h:outputLabel value = "PROVEEDORES:"  />	
+				<p:pickList id="pickList" value="#{recursosbo.proveedores}" var="prov" itemLabel="#{prov}" itemValue="#{prov}" />
+	              
+	                
+		
+		
+		<p:commandButton value="Crear" styleClass="ui-priority-primary" update="mesNewOferta" action="#{recursosbo.mensajeNewOferta}">
+		 
+   	     <f:ajax execute="@form" listener="#{recursosbo.oyenteNuevaOferta}" />
+		 
+		 </p:commandButton>
+		 <p:growl id="mesNewOferta" showDetail="true" />
+	</h:form>
+	
+	
+	<h:outputLink
+		value="http://localhost:8080/HOTELBEDS_17/resources/xhtml/menuBackOffice.xhtml">
+		<p:graphicImage name="/imagenes/volver.png" width="10%" alt="5%" />
+	</h:outputLink>
+</body> 
+</html>

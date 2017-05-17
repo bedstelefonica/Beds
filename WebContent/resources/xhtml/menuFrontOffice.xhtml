@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link rel="stylesheet" type="text/css" href="../css/Estilo1.css"/>
+</h:head>
+
+<header>
+<img src="../imagenes/logo-hb.png" /> 
+</header>
+	 
+	 <body >
+	 <form>
+   
+   <p:panelGrid columns="2"  styleClass="panelGridA" >            
+    <h:outputText value="Adjuntar factura" style="font-"/> 
+    <h:outputText value="Apuntarse oferta" /> 
+   
+        <h:outputLink
+        	value="http://localhost:8080/HOTELBEDS_17/resources/xhtml/facturacionFrontOffice.xhtml">
+		
+	<p:graphicImage name="/imagenes/ApuntarseOfer.jpg" width="20%" alt="20%" styleClass="img" title="Apuntarse a una oferta">                   </p:graphicImage> 
+    </h:outputLink>
+     <h:outputLink 
+	value="http://localhost:8080/HOTELBEDS_17/resources/xhtml/verFrontOfertas.xhtml">
+		<p:graphicImage name="/imagenes/adjuFact.jpg" width="20%"  alt="20%" styleClass="img"  title="Adjuntar factura">                 </p:graphicImage> 
+	</h:outputLink>
+    
+ 
+
+</p:panelGrid>
+
+<h:outputLink
+		value="http://localhost:8080/HOTELBEDS_17/resources/xhtml/login.xhtml">
+		<p:graphicImage name="/imagenes/volver.png" width="10%" alt="5%" /> 
+		
+	</h:outputLink>
+
+
+ 
+</form>
+</body>
+</html>

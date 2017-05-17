@@ -1,0 +1,55 @@
+* {
+	font-family: "Roboto", sans-serif;
+	font-size: 14px;
+	color: #000000;
+	font-weight: 300;
+	letter-spacing: 0.03em;
+}
+
+.logo {
+	width: 300px;
+}
+.cuerpo{
+	
+	background-color: #dbdbdb;
+
+}
+.principal {
+	
+}
+
+body {
+	vertical-align: middle;
+	padding: 20px 10px 10px 20px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: left;
+	background-color: #dbdbdb;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.cuadro {
+	border-radius: 0px;
+	text-align: left;
+	padding: 10px 20px 5px;
+	
+	
+}
+
+.Bordes {
+	vertical-align: middle;
+	width: 300px;
+	padding: 10px 20px 5px;
+	background-color: white;
+}
+
+.boton1 {
+	background-color: #1cff1c;
+}
+
+.boton2 {
+	background-color: #fb84e6;
+	text-align: left;
+}
