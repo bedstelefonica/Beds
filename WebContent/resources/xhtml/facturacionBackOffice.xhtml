@@ -10,6 +10,16 @@
 </h:head>
 <body>
 
+<SCRIPT type="text/javascript">
+
+function limpiarForm(){
+
+	document.getElementById("Formulario2").reset();
+}
+
+</SCRIPT>
+
+
 	<header>
 		<p:graphicImage name="/imagenes/logo-hb.png" />
 	</header>
@@ -55,7 +65,9 @@
 			</p:column>
 
 			<p:column headerText="Modificar">
-				<h:commandLink id="ttt" value="Selecionar">
+			
+			
+				<h:commandLink id="ttt" value="Selecionar"   >
 					<f:attribute name="DFactura" value="#{ObjetoFactura}">
 					</f:attribute>
 					<f:ajax event="action" listener="#{FacturacionBackOffice.oyente}"
@@ -108,7 +120,7 @@
 				styleClass="Bordes" />
 
 
-			<p:commandButton  id="BotonModificar" update="messages3" action="#{FacturacionBackOffice.mensajeModificacion}">
+			<p:commandButton  id="BotonModificar" update="messages3" action="#{FacturacionBackOffice.mensajeModificacion}" >
 				<f:attribute name="DFactura" value="#{ObjetoFactura}">
 				</f:attribute>
 				<f:ajax listener="#{FacturacionBackOffice.modifica}"

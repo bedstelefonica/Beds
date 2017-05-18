@@ -80,7 +80,7 @@ public class FacturacionBackOffice implements Serializable {
 
 	public void mensajeModificacion() {
 
-		FacesMessage msg = new FacesMessage("El Usuario a sido modificado con exito");
+		FacesMessage msg = new FacesMessage("El Usuario ha sido modificado con exito");
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 
 	}
